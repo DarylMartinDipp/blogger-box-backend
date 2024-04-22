@@ -1,8 +1,6 @@
 package com.dauphine.blogger.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloWorldController {
@@ -11,8 +9,13 @@ public class HelloWorldController {
         return "Hello World!";
     }
 
-    @GetMapping("hello_name")
+    @GetMapping("hello")
     public String helloByName(@RequestParam String name) {
         return "Hello " + name + "!";
+    }
+
+    @GetMapping("hello/{name}")
+    public String hello(@PathVariable String name) {
+        return "Welcome " + name + "!";
     }
 }
