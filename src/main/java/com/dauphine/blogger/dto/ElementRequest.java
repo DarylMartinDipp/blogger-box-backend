@@ -1,4 +1,4 @@
-package com.dauphine.blogger.models;
+package com.dauphine.blogger.dto;
 
 public class ElementRequest {
     private String title;

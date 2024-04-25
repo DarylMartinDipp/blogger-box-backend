@@ -1,6 +1,6 @@
 package com.dauphine.blogger.controllers;
 
-import com.dauphine.blogger.models.ElementRequest;
+import com.dauphine.blogger.dto.ElementRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
