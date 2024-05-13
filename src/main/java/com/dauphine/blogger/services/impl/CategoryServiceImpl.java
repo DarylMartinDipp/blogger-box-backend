@@ -1,6 +1,7 @@
 package com.dauphine.blogger.services.impl;
 
 import com.dauphine.blogger.models.Category;
+import com.dauphine.blogger.services.CategoryRepository;
 import com.dauphine.blogger.services.CategoryService;
 import org.springframework.stereotype.Service;
 
@@ -10,48 +11,38 @@ import java.util.UUID;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-    private final List<Category> temporaryCategories;
+    private final CategoryRepository repository;
 
-    public CategoryServiceImpl() {
-        this.temporaryCategories = new ArrayList<>();
-        this.temporaryCategories.add(new Category(UUID.randomUUID(), "My first category"));
-        this.temporaryCategories.add(new Category(UUID.randomUUID(), "My second category"));
-        this.temporaryCategories.add(new Category(UUID.randomUUID(), "My third category"));
+    public CategoryServiceImpl(CategoryRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public List<Category> getAll() {
-        return this.temporaryCategories;
+        return repository.findAll();
     }
 
     @Override
     public Category getById(UUID id) {
-        return this.temporaryCategories.stream()
-                .filter(category -> id.equals(category.getId()))
-                .findFirst()
-                .orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Category create(String name) {
         Category category = new Category(UUID.randomUUID(), name);
-        temporaryCategories.add(category);
-        return category;
+        return repository.save(category);
     }
 
     @Override
     public Category updateName(UUID id, String newName) {
-        Category category = temporaryCategories.stream()
-                .filter(c -> id.equals(c.getId()))
-                .findFirst()
-                .orElse(null);
-        if (category != null)
-            category.setName(newName);
-        return category;
+        Category category = getById(id);
+        if (category == null) return null;
+        category.setName(newName);
+        return repository.save(category);
     }
 
     @Override
     public void deleteById(UUID id) {
-        temporaryCategories.removeIf(category -> id.equals(category.getId()));
+        repository.deleteById(id);
     }
 }
