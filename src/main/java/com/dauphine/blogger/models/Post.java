@@ -26,6 +26,17 @@ public class Post {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public Post() {
+    }
+
+    public Post(String title, String content, Category category) {
+        this.id = UUID.randomUUID();
+        this.title = title;
+        this.content = content;
+        this.createdDate = LocalDateTime.now();
+        this.category = category;
+    }
+
     public UUID getId() {
         return id;
     }

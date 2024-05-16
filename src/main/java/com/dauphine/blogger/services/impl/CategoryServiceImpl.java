@@ -42,7 +42,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void deleteById(UUID id) {
+    public boolean deleteById(UUID id) {
         repository.deleteById(id);
+        return true;
     }
 }
