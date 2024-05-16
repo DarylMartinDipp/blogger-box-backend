@@ -2,7 +2,7 @@ package com.dauphine.blogger.services.impl;
 
 import com.dauphine.blogger.models.Category;
 import com.dauphine.blogger.models.Post;
-import com.dauphine.blogger.services.PostRepository;
+import com.dauphine.blogger.repositories.PostRepository;
 import com.dauphine.blogger.services.PostService;
 
 import java.util.List;

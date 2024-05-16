@@ -1,4 +1,4 @@
-package com.dauphine.blogger.services;
+package com.dauphine.blogger.repositories;
 
 import com.dauphine.blogger.models.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
