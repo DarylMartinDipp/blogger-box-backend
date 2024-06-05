@@ -47,7 +47,7 @@ public class HelloWorldController {
 
     @PostMapping("/elements")
     @Operation(
-            summary = "Create a new post",
+            summary = "Create a new post endpoint",
             description = "Create a new post with a title and a description."
     )
     public String create(@RequestBody ElementRequest body) {
@@ -59,7 +59,7 @@ public class HelloWorldController {
 
     @PutMapping("/element/{id}")
     @Operation(
-            summary = "Update a post",
+            summary = "Update a post endpoint",
             description = "Update a post according to the id."
     )
     public String update(@PathVariable Integer id, @RequestBody ElementRequest body) {
@@ -71,7 +71,7 @@ public class HelloWorldController {
 
     @PatchMapping("/element/{id}/description")
     @Operation(
-            summary = "Update the description of a post",
+            summary = "Update the description of a post endpoint",
             description = "Update the description of a post according to the id."
     )
     public String patch(@PathVariable Integer id, @RequestBody String description) {
@@ -83,7 +83,7 @@ public class HelloWorldController {
 
     @DeleteMapping("/element/{id}")
     @Operation(
-            summary = "Delete a post",
+            summary = "Delete a post endpoint",
             description = "Delete a post according to the id."
     )
     public String delete(@PathVariable Integer id) {
