@@ -27,10 +27,10 @@ public class CategoryController {
 
     @GetMapping
     @Operation(
-            summary = "Get all the posts endpoint",
-            description = "Return all the posts that are in the database."
+            summary = "Get all the categories endpoint",
+            description = "Return all the categories that are in the database."
     )
-    public List<Category> getAll(@RequestParam String name) {
+    public List<Category> getAll(@RequestParam (required = false) String name) {
         return name == null || name.isBlank()
                 ? service.getAll()
                 : service.getAllByName(name);
