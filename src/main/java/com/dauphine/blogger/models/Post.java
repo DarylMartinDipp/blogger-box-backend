@@ -8,7 +8,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "post")
 public class Post {
-
     @Id
     @Column(name = "id")
     private UUID id;
@@ -24,17 +23,16 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category;
+    private Category category_id;
 
-    public Post() {
-    }
+    public Post() {}
 
-    public Post(String title, String content, Category category) {
+    public Post(String title, String content, Category category_id) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.content = content;
         this.createdDate = LocalDateTime.now();
-        this.category = category;
+        this.category_id = category_id;
     }
 
     public UUID getId() {
@@ -53,8 +51,8 @@ public class Post {
         return createdDate;
     }
 
-    public Category getCategory() {
-        return category;
+    public Category getCategory_id() {
+        return category_id;
     }
 
     public void setId(UUID id) {
@@ -73,7 +71,7 @@ public class Post {
         this.createdDate = createdDate;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(Category category_id) {
+        this.category_id = category_id;
     }
 }

@@ -23,7 +23,11 @@ public class Category {
     }
 
     //  Very important to have an empty constructor and getters and setters for each property
-    public Category() {
+    public Category() {}
+
+    public Category(String name) {
+        this.id = UUID.randomUUID();
+        this.name = name;
     }
 
     public UUID getId() {

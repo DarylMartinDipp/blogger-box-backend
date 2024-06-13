@@ -1,7 +1,8 @@
 package com.dauphine.blogger.services;
 
+import com.dauphine.blogger.exceptions.CategoryAlreadyExistsException;
 import com.dauphine.blogger.models.Category;
-import com.dauphine.blogger.services.impl.exceptions.CategoryNotFoundByNameException;
+import com.dauphine.blogger.exceptions.CategoryNotFoundByIdException;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,11 +13,11 @@ public interface CategoryService {
 
     List<Category> getAllByName(String name);
 
-    Category getById(UUID id) throws CategoryNotFoundByNameException;
+    Category getById(UUID id) throws CategoryNotFoundByIdException;
 
-    Category create(String name);
+    Category create(String name) throws CategoryAlreadyExistsException;
 
-    Category updateName(UUID id, String newName) throws CategoryNotFoundByNameException;
+    Category updateName(UUID id, String newName) throws CategoryNotFoundByIdException, CategoryAlreadyExistsException;
 
-    boolean deleteById(UUID id);
+    void deleteById(UUID id) throws CategoryNotFoundByIdException;
 }
