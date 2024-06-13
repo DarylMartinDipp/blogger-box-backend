@@ -23,16 +23,16 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category_id;
+    private Category category;
 
     public Post() {}
 
-    public Post(String title, String content, Category category_id) {
+    public Post(String title, String content, Category category) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.content = content;
         this.createdDate = LocalDateTime.now();
-        this.category_id = category_id;
+        this.category = category;
     }
 
     public UUID getId() {
@@ -51,8 +51,8 @@ public class Post {
         return createdDate;
     }
 
-    public Category getCategory_id() {
-        return category_id;
+    public Category getCategory() {
+        return category;
     }
 
     public void setId(UUID id) {
@@ -72,6 +72,6 @@ public class Post {
     }
 
     public void setCategory(Category category_id) {
-        this.category_id = category_id;
+        this.category = category_id;
     }
 }

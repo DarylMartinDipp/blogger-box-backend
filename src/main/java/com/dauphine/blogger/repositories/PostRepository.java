@@ -9,10 +9,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PostRepository extends JpaRepository<Post, UUID> {
-    @Query("""
-        SELECT p
-        FROM Post p
-        WHERE p.category_id=:categoryID
-    """)
-    List<Post> getAllByCategoryId(@Param("category_id") UUID categoryID);
+    List<Post> findByTitleContaining(String title);
+    List<Post> findByCategory_id(UUID categoryID);
 }

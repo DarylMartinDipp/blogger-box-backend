@@ -7,10 +7,12 @@ import com.dauphine.blogger.models.Post;
 import com.dauphine.blogger.repositories.PostRepository;
 import com.dauphine.blogger.services.CategoryService;
 import com.dauphine.blogger.services.PostService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class PostServiceImpl implements PostService {
     private final PostRepository repository;
     private final CategoryService categoryService;
@@ -28,7 +30,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> getAllByCategoryId(UUID categoryId) throws CategoryNotFoundByIdException {
         categoryService.getById(categoryId);
-        return repository.getAllByCategoryId(categoryId);
+        return repository.findByCategory_id(categoryId);
     }
 
     @Override
