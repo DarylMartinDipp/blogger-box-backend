@@ -53,9 +53,9 @@ public class CategoryController {
             summary = "Create a category endpoint",
             description = "Create a new category."
     )
-    public ResponseEntity<Category> createCategory(@RequestBody Category request) {
+    public ResponseEntity<Category> createCategory(@RequestBody String categoryName) {
         try {
-            final Category categoryToCreate = service.create(request.getName());
+            final Category categoryToCreate = service.create(categoryName);
             return ResponseEntity
                     .created(URI.create("v1/categories/" + categoryToCreate.getId()))
                     .body(categoryToCreate);
