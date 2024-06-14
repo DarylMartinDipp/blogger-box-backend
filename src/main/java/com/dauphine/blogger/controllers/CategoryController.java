@@ -4,6 +4,7 @@ import com.dauphine.blogger.models.Category;
 import com.dauphine.blogger.services.CategoryService;
 import com.dauphine.blogger.exceptions.CategoryAlreadyExistsException;
 import com.dauphine.blogger.exceptions.CategoryNotFoundByIdException;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
