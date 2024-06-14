@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -75,10 +76,12 @@ public class PostController {
     @GetMapping
     @Operation(
             summary = "Get all the posts endpoint",
-            description = "Return all the categories that are in the database."
+            description = "Return all the categories that are in the database, sorted" +
+                    "by their creation date."
     )
     public ResponseEntity<List<Post>> getAll(@RequestParam (required = false) String name) {
         List<Post> postsToGet = postService.getAll();
+        postsToGet.sort(Comparator.comparing(Post::getCreatedDate).reversed());
         return ResponseEntity.ok(postsToGet);
     }
 
