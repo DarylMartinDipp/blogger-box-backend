@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
@@ -38,7 +39,9 @@ public class PostController {
             Post post = postService.create(
                     postToCreate.getTitle(), postToCreate.getContent(), postToCreate.getCategory_id()
             );
-            return ResponseEntity.ok(post);
+            return ResponseEntity
+                    .created(URI.create("v1/posts/" + post.getId()))
+                    .body(post);
         } catch (CategoryNotFoundByIdException e) {
             return ResponseEntity.notFound().build();
         }
